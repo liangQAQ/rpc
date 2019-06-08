@@ -8,6 +8,11 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        try {
+            System.out.println("启动rpc服务端...");
+            new PublishService().publish();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

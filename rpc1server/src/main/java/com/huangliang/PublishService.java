@@ -1,5 +1,7 @@
 package com.huangliang;
 
+import com.huangliang.service.HelloServiceImpl;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -13,11 +15,11 @@ public class PublishService {
 
     ExecutorService executorService = Executors.newCachedThreadPool();
 
-    public void publish() throws IOException {
+    public void publish() throws Exception {
         ServerSocket serverSocket= new ServerSocket(8000);
         while (true){
             Socket client = serverSocket.accept();
-            executorService.execute(new ProxyHandler(client));
+            executorService.execute(new ProxyHandler(client,new HelloServiceImpl()));
         }
     }
 }
