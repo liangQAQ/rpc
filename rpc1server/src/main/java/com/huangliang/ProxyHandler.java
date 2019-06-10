@@ -8,15 +8,12 @@ import java.io.ObjectOutputStream;
 import java.lang.reflect.Method;
 import java.net.Socket;
 
-public class ProxyHandler implements Runnable {
+public class ProxyHandler extends IocContainer implements Runnable {
 
     private Socket client;
-    private Object service;
 
-
-    public ProxyHandler(Socket client, Object service) {
+    public ProxyHandler(Socket client) {
         this.client = client;
-        this.service = service;
     }
 
     @Override
@@ -52,9 +49,9 @@ public class ProxyHandler implements Runnable {
             types[i] = args[i].getClass();
         }
         try {
-            clazz = Class.forName(service.getClass().getName());
+            clazz =  ioc.get(request.getSimpleClassName());
             method = clazz.getMethod(request.getMethodName(),types);
-            result = method.invoke(service,args);
+            result = method.invoke(clazz.newInstance(),args);
         } catch (Exception e) {
             e.printStackTrace();
         }

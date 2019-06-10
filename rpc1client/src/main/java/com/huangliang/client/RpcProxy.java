@@ -44,6 +44,7 @@ public class RpcProxy implements InvocationHandler {
             rpcRequest.setArgs(args);
             rpcRequest.setClassName(interfaces.getName());
             rpcRequest.setMethodName(method.getName());
+            rpcRequest.setSimpleClassName(interfaces.getSimpleName());
             objectOutStream.writeObject(rpcRequest);
             objectInputStream = new ObjectInputStream(s.getInputStream());
             result = objectInputStream.readObject();

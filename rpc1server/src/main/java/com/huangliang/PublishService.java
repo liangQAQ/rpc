@@ -19,7 +19,7 @@ public class PublishService {
         ServerSocket serverSocket= new ServerSocket(8000);
         while (true){
             Socket client = serverSocket.accept();
-            executorService.execute(new ProxyHandler(client,new HelloServiceImpl()));
+            executorService.execute(new ProxyHandler(client));
         }
     }
 }

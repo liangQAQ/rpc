@@ -1,9 +1,16 @@
 package com.huangliang.api.entity;
 
-public class Student {
+import java.io.Serializable;
+
+public class Student implements Serializable {
 
     private String name;
     private Integer age;
+
+    public Student(String name, Integer age) {
+        this.name = name;
+        this.age = age;
+    }
 
     public String getName() {
         return name;

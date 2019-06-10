@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class RpcRequest implements Serializable {
 
+    private String simpleClassName;
     private String className;
     private String methodName;
     private Object[] args;
@@ -30,5 +31,13 @@ public class RpcRequest implements Serializable {
 
     public void setArgs(Object[] args) {
         this.args = args;
+    }
+
+    public String getSimpleClassName() {
+        return simpleClassName;
+    }
+
+    public void setSimpleClassName(String simpleClassName) {
+        this.simpleClassName = simpleClassName;
     }
 }
