@@ -8,7 +8,7 @@ import com.huangliang.netty.annotation.HLRequestMapping;
 public class TestController {
 
     @HLRequestMapping("/test")
-    public String test(String name){
-        return "hello11"+name;
+    public String test(String name1,String name2){
+        return name1+"-"+name2;
     }
 }
