@@ -29,7 +29,7 @@ public class RegisterZK {
             Class interFace = entry.getValue().getInterfaces()[0];
             for(Method method : interFace.getDeclaredMethods()){
                 String zkPath =rootPath+ "/"+interFace.getName()+"/"+method.getName()+"/"+host;
-                curatorFramework.create().creatingParentsIfNeeded().withMode(CreateMode.EPHEMERAL_SEQUENTIAL).forPath(zkPath);
+                curatorFramework.create().creatingParentsIfNeeded().withMode(CreateMode.EPHEMERAL).forPath(zkPath);
             }
         }
     }

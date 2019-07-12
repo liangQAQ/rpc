@@ -24,7 +24,6 @@ public class ProxyHandler extends IocContainer implements Runnable {
             objectInputStream = new ObjectInputStream(client.getInputStream());
             RpcRequest request = (RpcRequest) objectInputStream.readObject();
             Object result = invoke(request);
-            System.out.println("result = "+result);
             objectOutStream = new ObjectOutputStream(client.getOutputStream());
             objectOutStream.writeObject(result);
         } catch (Exception e) {

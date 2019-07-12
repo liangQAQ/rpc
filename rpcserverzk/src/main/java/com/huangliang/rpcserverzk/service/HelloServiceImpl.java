@@ -7,6 +7,7 @@ import com.huangliang.rpcserverzk.annotation.zkNode;
 public class HelloServiceImpl implements HelloService {
     @Override
     public String hello(String name) {
+        System.out.println("hello :" + name);
         return "hello:"+name;
     }
 }
